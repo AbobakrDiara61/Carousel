@@ -15,6 +15,7 @@
     --gray-500 : #ccc;
     --light-bg: #fefefe;
     --darker-bg: #111827c8;
+    --dark-hover: #111827;
 
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);   
     --cubic-bezier-smooth: cubic-bezier(0.4, 0, 0.2, 1);
@@ -48,34 +49,45 @@ ul {
 }
 
 /* Main Idea */
-.img-slider {
+.carousel {
     position: relative;
     width: 100%;
 }
-.img-slider .imgs-container {
+.carousel .imgs-container {
+    position: relative;
     margin: 0 auto;
     display: flex;
-    width: 600px;
-    /* height: 400px; */
-    /* overflow: hidden; */
+    width: 500px;
+    height: 300px;
+    border-radius: 1rem;
+    overflow: hidden;
 } 
-.img-slider .img-wrapper {
-    display: none;
+.carousel .img-wrapper {
+    position: absolute;
+    /* inset: 0; */
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
+    opacity: 0;
+    transition: var(--transition-smooth);
+    transition-delay: 200ms;
 } 
-.img-slider .img-wrapper.active {
-    display: block;
+.carousel .img-wrapper.active {
+    transition-delay: 0ms;
+    opacity: 1;
+    z-index: 1;
 } 
 
-.img-slider .img-wrapper img {
+.carousel .img-wrapper img {
     display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
 } 
 /* End of Idea */
-.img-slider .arrow {
+.carousel .arrow {
     /* default settings */
     cursor: pointer;
     border: none;
@@ -89,11 +101,16 @@ ul {
     border-radius: 50%;
     color: var(--gray-500);
     background-color: var(--darker-bg);
+    transition: var(--transition-smooth);
 }
-.img-slider .prev {
+.carousel .arrow:hover {
+    background-color: var(--dark-hover);
+    color: var(--light-bg);
+}
+.carousel .prev {
     left: 20px;
 }
-.img-slider .next {
+.carousel .next {
     right: 20px;
 }
 .dots-wrapper {
@@ -110,6 +127,7 @@ ul {
     height: var(--dot-diameter);
     border-radius: 50%;
     
+    cursor: pointer;
     background-color: var(--primary);
     transition: background-color 0.2s linear;
 }
@@ -117,9 +135,34 @@ ul {
 .dots-wrapper li:hover {
     background-color: var(--primary-dark);
 } 
-#auto-btn {
+#auto-btn { 
     top: auto; 
     bottom: 20px; 
     left: 50%; 
     transform: translateX(-50%); 
+    transition: var(--transition-smooth);
+    z-index: 3;
+}
+#auto-btn.active {
+    transform: translateX(-50%) rotate(180deg); 
+}
+#auto-btn span {
+    position: absolute;
+    display: block;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: var(--transition-smooth);
+}
+#auto-btn span:first-child {
+    opacity: 1;
+}
+#auto-btn.active span:first-child {
+    opacity: 0;
+}
+#auto-btn span:last-child {
+    opacity: 0;
+}
+#auto-btn.active span:last-child {
+    opacity: 1;
 }

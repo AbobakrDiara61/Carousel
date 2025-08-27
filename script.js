@@ -25,6 +25,7 @@ dotsSelectors.forEach(dot => {
     })
 });
 autoBtn.addEventListener("click", automate);
+autoBtn.addEventListener("click", () => autoBtn.classList.toggle("active"));
 function showImage() {
     if(currentIndex < 0) 
         currentIndex = SIZE - 1;

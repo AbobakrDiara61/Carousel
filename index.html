@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Image Slider</title>
+</head>
+<body>
+    <section class="img-slider">
+        <div class="imgs-container">
+            <div class="img-wrapper active">
+                <img src="img0.jpg" alt="">
+            </div>
+
+            <div class="img-wrapper">
+                <img src="img1.jpg" alt="">
+            </div>
+
+            <div class="img-wrapper">
+                <img src="img2.jpg" alt="">
+            </div>
+
+            <div class="img-wrapper">
+                <img src="img3.jpg" alt="">
+            </div>
+        </div>
+
+        <!-- Arrows -->
+        <!-- Next and previous buttons -->
+        <button class="prev arrow" >&#10094;</button>
+        <button class="next arrow" >&#10095;</button>
+        <!-- Dots -->   
+        <ul class="dots-wrapper">
+            <li data-index="0" class="active"></li>
+            <li data-index="1"></li>
+            <li data-index="2"></li>
+            <li data-index="3"></li>
+        </ul>
+        <button class="arrow" id="auto-btn">
+            &#9658;
+        </button>
+    </section>
+    <script src="script.js"></script>
+</body>
+</html>

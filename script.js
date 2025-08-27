@@ -1,5 +1,27 @@
 // For Adding All of Images from js later
-// const imgsContainer = document.querySelector(".imgs-container");
+const imgsContainer = document.querySelector(".imgs-container");
+
+// Number of images
+const totalImgs = 6; 
+const pagitionDots = document.querySelector(".dots-wrapper");
+for (let i = 0; i < totalImgs; i++) {
+    pagitionDots.innerHTML += `<li data-index="${i}"></li>`;
+    // create wrapper
+    const wrapper = document.createElement("div");
+    wrapper.classList.add("img-wrapper");
+    if (i === 0) {
+        wrapper.classList.add("active"); // first image active
+        pagitionDots.children[0].classList.add("active");
+    }
+    // create image
+    const img = document.createElement("img");
+    img.src = `img${i}.jpg`;
+    img.alt = `Image ${i}`;
+
+    // append
+    wrapper.appendChild(img);
+    imgsContainer.appendChild(wrapper);
+}
 const imgsWrappers = document.querySelectorAll(".imgs-container .img-wrapper");
 const dotsSelectors = document.querySelectorAll(".dots-wrapper li");
 const prev = document.querySelector(".prev");
